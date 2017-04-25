@@ -17,6 +17,8 @@ for sending a message just because you can.
 `pypyr <https://github.com/pypyr/pypyr-cli>`__ is a command line interface to
 run pipelines defined in yaml.
 
+|build-status| |coverage| |pypi|
+
 .. contents::
 
 .. section-numbering::
