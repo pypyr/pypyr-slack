@@ -23,7 +23,7 @@ steps:
       cmd: |
              . .envbump/bin/activate &&
              pip install -e .[deploy] &&
-             bumpversion --no-tag  --commit ${bumpLevel} '{versionFile} --dry-run'
+             bumpversion --no-tag  --commit ${bumpLevel} '{versionFile}' --dry-run
   - name: pypyr.steps.py
     in:
       pycode: "context['newVersion'] = pypyrslack.version.__version__"
