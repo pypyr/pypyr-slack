@@ -20,7 +20,7 @@ build:
 
 integrations:
   key:
-    - integrationName: ssh-pypyr
+    - integrationName: ssh-pypyr-slack
       type: ssh-key
 
   generic:
