@@ -9,7 +9,7 @@ pip install -q -e .[deploy]
 
 # version.py will return "pypyr x.y.z python a.b.c" - get everything after the
 # space for the bare version number.
-NEW_VERSION=`python pypyrslack/version.py | cut -d " " -f2`
+NEW_VERSION=`python pypyrslack/version.py`
 echo "New version is: ${NEW_VERSION}"
 TAG_NAME="v${NEW_VERSION}"
 

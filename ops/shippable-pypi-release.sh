@@ -9,7 +9,7 @@ pip install -q -e .[deploy]
 
 # version.py will return "pypyr x.y.z python a.b.c" - get everything after the
 # space for the bare version number.
-NEW_VERSION=`python pypyrslack/version.py | cut -d " " -f2`
+NEW_VERSION=`python pypyrslack/version.py`
 echo "New version is: ${NEW_VERSION}"
 TAG_NAME="v${NEW_VERSION}"
 
@@ -30,7 +30,7 @@ echo "----------Deploy to pypi complete. Testing in new virtual env.-------"
 pip install pypyr-slack -q
 # pypyr --v will return "pypyr x.y.z" - get everything after the space for the
 # bare version number.
-TEST_DEPLOY_VERSION=`python pypyrslack/version.py | cut -d " " -f2`
+TEST_DEPLOY_VERSION=`python pypyrslack/version.py`
 if [ "${TEST_DEPLOY_VERSION}" =  "${NEW_VERSION}" ]; then
   echo "Deployed version is ${TEST_DEPLOY_VERSION}. Smoke test passed OK."
 else

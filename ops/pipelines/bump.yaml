@@ -16,7 +16,7 @@ steps:
                    NOT tagging here, because tagging is happening in CI on master merge.
     in:
       versionFile: pypyrslack/version.py
-      cmd: pip install -e .[deploy]
+      cmd: pip install -q -e .[deploy]
   - name: pypyr.steps.shell
     description: |
                    Bump version number. first param is choice of: major, minor, patch
