@@ -109,8 +109,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'pypyrslack': [
-            'pypyrslack=pypyrslack',
-            'pypyr.slack=pypyrslack'
+            'pypyrslack=pypyrslack'
         ]
     },
 )
