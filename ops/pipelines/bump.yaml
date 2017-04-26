@@ -28,7 +28,7 @@ steps:
     in:
       pycode: |
                 import pypyrslack.version
-                context['newVersion'] = pypyrslack.version.__version__"
+                context['newVersion'] = pypyrslack.version.__version__
   - name: pypyr.steps.echo
     in:
       echoMe: "New version is: ${newVersion}"
@@ -43,5 +43,5 @@ steps:
 
 on_failure:
   - name: pypyr.steps.shell
-  - in:
-    - cmd: deactivate || true; rm -rf .envbump
+    in:
+      cmd: deactivate || true; rm -rf .envbump
