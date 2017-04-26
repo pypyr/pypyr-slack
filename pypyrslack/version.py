@@ -16,4 +16,4 @@ if __name__ == '__main__':
 
     Makes it easy to get version number from cli from outside the package.
     """
-    print(get_version())
+    print(__version__)
