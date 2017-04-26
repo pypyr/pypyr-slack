@@ -10,20 +10,20 @@ steps:
     description: tox for build  validation and linting
     in:
       cmd: tox -e stage -- tests
-  - name: pypyr.steps.safeshell
-    description: create virtualenv
-    in:
-      cmd: virtualenv .envbump
   - name: pypyr.steps.shell
     description: |
                    Bump version number. first param is choice of: major, minor, patch
                    NOT tagging here, because tagging is happening in CI on master merge.
     in:
       versionFile: pypyrslack/version.py
-      cmd: |
-             . .envbump/bin/activate &&
-             pip install -e .[deploy] &&
-             bumpversion --no-tag  --commit ${bumpLevel} '{versionFile}' --dry-run
+      cmd: pip install -e .[deploy]
+  - name: pypyr.steps.shell
+    description: |
+                   Bump version number. first param is choice of: major, minor, patch
+                   NOT tagging here, because tagging is happening in CI on master merge.
+    in:
+      versionFile: pypyrslack/version.py
+      cmd: bumpversion --no-tag  --commit ${bumpLevel} '{versionFile}' --dry-run
   - name: pypyr.steps.py
     in:
       pycode: |
@@ -36,12 +36,3 @@ steps:
     description: push the changes to git
     in:
       cmd: git status
-  - name: pypyr.steps.safeshell
-    description: get rid of virtual env
-    in:
-      cmd: deactivate && rm -rf .envbump
-
-on_failure:
-  - name: pypyr.steps.shell
-    in:
-      cmd: deactivate || true; rm -rf .envbump
