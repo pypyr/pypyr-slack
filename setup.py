@@ -88,7 +88,7 @@ setup(
     extras_require={
         'dev': ['check-manifest', 'flake8'],
         'test': ['pytest', 'pytest-cov', 'tox'],
-        'deploy': ['bumpversion']
+        'deploy': ['bumpversion', 'twine']
     },
 
     # If there are data files included in your packages that need to be
