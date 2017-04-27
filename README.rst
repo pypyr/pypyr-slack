@@ -118,7 +118,7 @@ If you saved this yaml as ``./pipelines/hoping-for-a-hotdog.yaml``, you can run
 
 .. code-block:: bash
 
-  ./pypyr --name hoping-for-a-hotdog --log 20
+  ./pypyr hoping-for-a-hotdog --log 20
 
 
 See a worked example for `pypyr slack here
