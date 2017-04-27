@@ -64,7 +64,7 @@ Requires the following context items:
 
 Text substitutions
 ------------------
-For both slackChannel and slackText you can use substitution tokens, or string
+For both slackChannel and slackText you can use substitution tokens, aka string
 interpolation. This substitutes anything between curly braces with the context
 value for that key. For example, if your context looked like this:
 
@@ -118,7 +118,7 @@ If you saved this yaml as ``./pipelines/hoping-for-a-hotdog.yaml``, you can run
 
 .. code-block:: bash
 
-  ./pypyr --name hoping-for-a-hotdog --log 20
+  ./pypyr hoping-for-a-hotdog --log 20
 
 
 See a worked example for `pypyr slack here
@@ -143,7 +143,7 @@ you want to post. You invite the bot in like you would a normal user.
 Ensure secrets stay secret
 ==========================
 Be safe! Don't hard-code your api token, don't check it into a public repo.
-Here are some api handling tokens from `slack <http://slackapi.github.io/python-slackclient/auth.html#handling-tokens>`__.
+Here are some tips for handling api tokens from `slack <http://slackapi.github.io/python-slackclient/auth.html#handling-tokens>`__.
 
 Do remember not to fling the api key around as a shell argument - it could
 very easily leak that way into logs or expose via a ``ps``. I generally use one
