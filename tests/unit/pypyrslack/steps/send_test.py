@@ -1,6 +1,7 @@
 """send.py unit tests."""
 import pytest
 from pypyr.context import Context
+from pypyr.errors import KeyInContextHasNoValueError, KeyNotInContextError
 from pypyrslack.errors import SlackSendError
 from pypyrslack.steps import send
 from slackclient import SlackClient
@@ -65,35 +66,66 @@ def test_slack_error_raises(mock_client, mock_post):
 
 def test_no_slack_token_raises():
     """slackToken context required."""
-    with pytest.raises(AssertionError) as err_info:
+    with pytest.raises(KeyNotInContextError) as err_info:
         context = Context({'slackChannel': '#blah',
                            'slackText': 'this is :boom: text'})
         send.run_step(context)
 
-    assert repr(err_info.value) == ("AssertionError(\"context['slackToken'] "
-                                    "doesn't exist. It must have a value for "
-                                    "pypyrslack.steps.send.\",)")
+    assert repr(err_info.value) == (
+        "KeyNotInContextError(\"context['slackToken'] "
+        "doesn't exist. It must exist for "
+        "pypyrslack.steps.send.\",)")
 
 
 def test_no_slack_channel_raises():
     """slackChannel context required."""
-    with pytest.raises(AssertionError) as err_info:
+    with pytest.raises(KeyNotInContextError) as err_info:
         context = Context({'slackToken': 'in your dreams',
                            'slackText': 'this is :boom: text'})
         send.run_step(context)
 
-    assert repr(err_info.value) == ("AssertionError(\"context['slackChannel'] "
-                                    "doesn't exist. It must have a value for "
-                                    "pypyrslack.steps.send.\",)")
+    assert repr(err_info.value) == (
+        "KeyNotInContextError(\"context['slackChannel'] "
+        "doesn't exist. It must exist for "
+        "pypyrslack.steps.send.\",)")
 
 
 def test_no_slack_text_raises():
     """slackChannel context required."""
-    with pytest.raises(AssertionError) as err_info:
+    with pytest.raises(KeyNotInContextError) as err_info:
         context = Context({'slackToken': 'in your dreams',
                            'slackChannel': '#blah'})
         send.run_step(context)
 
-    assert repr(err_info.value) == ("AssertionError(\"context['slackText'] "
-                                    "doesn't exist. It must have a value for "
-                                    "pypyrslack.steps.send.\",)")
+    assert repr(err_info.value) == (
+        "KeyNotInContextError(\"context['slackText'] "
+        "doesn't exist. It must exist for "
+        "pypyrslack.steps.send.\",)")
+
+
+def test_slack_token_no_value_raises():
+    """slackToken context value required."""
+    with pytest.raises(KeyInContextHasNoValueError) as err_info:
+        context = Context({
+            'slackToken': None,
+            'slackChannel': '#blah',
+            'slackText': 'this is :boom: text'})
+        send.run_step(context)
+
+    assert repr(err_info.value) == (
+        "KeyInContextHasNoValueError(\"context['slackToken'] "
+        "must have a value for pypyrslack.steps.send.\",)")
+
+
+def test_slack_channel_no_value_raises():
+    """slackChannel context value required."""
+    with pytest.raises(KeyInContextHasNoValueError) as err_info:
+        context = Context({
+            'slackToken': 'token here',
+            'slackChannel': None,
+            'slackText': 'this is :boom: text'})
+        send.run_step(context)
+
+    assert repr(err_info.value) == (
+        "KeyInContextHasNoValueError(\"context['slackChannel'] "
+        "must have a value for pypyrslack.steps.send.\",)")
