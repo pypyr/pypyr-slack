@@ -115,10 +115,11 @@ could look like:
         slackText: "whoops! :rage1:"
 
 If you saved this yaml as ``./pipelines/hoping-for-a-hotdog.yaml``, you can run
+from ./ the following:
 
 .. code-block:: bash
 
-  ./pypyr hoping-for-a-hotdog
+  pypyr hoping-for-a-hotdog
 
 
 See a worked example for `pypyr slack here
