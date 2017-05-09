@@ -74,7 +74,7 @@ value for that key. For example, if your context looked like this:
   arbitraryText: down the
   moreArbText: wild
   slackChannel: "#{arbitraryValue}"
-  slackText: "piping {arbitraryText} the valleys {moreArbText}"
+  slackText: "piping {arbitraryText} valleys {moreArbText}"
 
 This will result in sending a message to *#pypyrchannel* with text:
 
