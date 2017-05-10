@@ -74,7 +74,7 @@ value for that key. For example, if your context looked like this:
   arbitraryText: down the
   moreArbText: wild
   slackChannel: "#{arbitraryValue}"
-  slackText: "piping {arbitraryText} the valleys {moreArbText}"
+  slackText: "piping {arbitraryText} valleys {moreArbText}"
 
 This will result in sending a message to *#pypyrchannel* with text:
 
@@ -115,10 +115,11 @@ could look like:
         slackText: "whoops! :rage1:"
 
 If you saved this yaml as ``./pipelines/hoping-for-a-hotdog.yaml``, you can run
+from ./ the following:
 
 .. code-block:: bash
 
-  ./pypyr hoping-for-a-hotdog --log 20
+  pypyr hoping-for-a-hotdog
 
 
 See a worked example for `pypyr slack here
