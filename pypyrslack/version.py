@@ -2,12 +2,12 @@
 
 import platform
 
-__version__ = '0.1.1'
+__version__ = '0.2.0'
 
 
 def get_version():
     """Returns package-name __version__ python python_version"""
-    return (f'pypyr-slack {__version__} '
+    return (f'pypyrslack {__version__} '
             f'python {platform.python_version()}')
 
 
