@@ -31,9 +31,9 @@ pip
 ===
 .. code-block:: bash
 
-  # pip install --upgrade pypyr-slack
+  # pip install --upgrade pypyrslack
 
-pypyr-slack depends on pypyr-cli. The above ``pip`` will install it for you if
+pypyrslack depends on pypyr-cli. The above ``pip`` will install it for you if
 you don't have it already.
 
 Python version
@@ -230,7 +230,7 @@ https://www.345.systems/contact.
                 :alt: coverage status
                 :target: https://app.shippable.com/github/pypyr/pypyr-slack
 
-.. |pypi| image:: https://badge.fury.io/py/pypyr-slack.svg
+.. |pypi| image:: https://badge.fury.io/py/pypyrslack.svg
                 :alt: pypi version
-                :target: https://pypi.python.org/pypi/pypyr-slack/
+                :target: https://pypi.python.org/pypi/pypyrslack/
                 :align: bottom
