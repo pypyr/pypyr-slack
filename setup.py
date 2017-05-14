@@ -63,7 +63,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='devops pipeline runner slack plug-in integration',
+    keywords='pypyr slack plugin devops pipeline runner',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
