@@ -82,7 +82,7 @@ This will result in sending a message to *#pypyrchannel* with text:
 
 Escape literal curly braces with doubles: {{ for {, }} for }
 
-See a worked example `for substitions here
+See a worked example `for substitutions here
 <https://github.com/pypyr/pypyr-example/tree/master/pipelines/substitutions.yaml>`__.
 
 Sample pipeline
