@@ -11,7 +11,7 @@ def test_base_error_raises():
     with pytest.raises(PypyrSlackError) as err_info:
         raise PypyrSlackError("this is error text right here")
 
-    assert repr(err_info.value) == ("PypySlackError('this is error text "
+    assert repr(err_info.value) == ("Error('this is error text "
                                     "right here',)")
 
 

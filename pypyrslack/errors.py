@@ -3,10 +3,10 @@
 All pypyrslack specific exceptions derive from pypyr root Error.
 """
 
-from pypyr.errors import Error as PypyrError
+from pypyr.errors import PlugInError
 
 
-class Error(PypyrError):
+class Error(PlugInError):
     """Base class for all pypyr exceptions."""
 
 
