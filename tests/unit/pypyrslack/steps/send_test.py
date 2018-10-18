@@ -61,7 +61,7 @@ def test_slack_error_raises(mock_client, mock_post):
     with pytest.raises(SlackSendError) as err_info:
         send.run_step(context)
 
-    assert repr(err_info.value) == ("SlackSendError('bang bang',)")
+    assert str(err_info.value) == "bang bang"
 
 
 def test_no_slack_token_raises():
@@ -71,10 +71,9 @@ def test_no_slack_token_raises():
                            'slackText': 'this is :boom: text'})
         send.run_step(context)
 
-    assert repr(err_info.value) == (
-        "KeyNotInContextError(\"context['slackToken'] "
-        "doesn't exist. It must exist for "
-        "pypyrslack.steps.send.\",)")
+    assert str(err_info.value) == (
+        "context['slackToken'] doesn't exist. It must exist for "
+        "pypyrslack.steps.send.")
 
 
 def test_no_slack_channel_raises():
@@ -84,10 +83,9 @@ def test_no_slack_channel_raises():
                            'slackText': 'this is :boom: text'})
         send.run_step(context)
 
-    assert repr(err_info.value) == (
-        "KeyNotInContextError(\"context['slackChannel'] "
-        "doesn't exist. It must exist for "
-        "pypyrslack.steps.send.\",)")
+    assert str(err_info.value) == (
+        "context['slackChannel'] doesn't exist. It must exist for "
+        "pypyrslack.steps.send.")
 
 
 def test_no_slack_text_raises():
@@ -97,10 +95,9 @@ def test_no_slack_text_raises():
                            'slackChannel': '#blah'})
         send.run_step(context)
 
-    assert repr(err_info.value) == (
-        "KeyNotInContextError(\"context['slackText'] "
-        "doesn't exist. It must exist for "
-        "pypyrslack.steps.send.\",)")
+    assert str(err_info.value) == (
+        "context['slackText'] doesn't exist. It must exist for "
+        "pypyrslack.steps.send.")
 
 
 def test_slack_token_no_value_raises():
@@ -112,9 +109,8 @@ def test_slack_token_no_value_raises():
             'slackText': 'this is :boom: text'})
         send.run_step(context)
 
-    assert repr(err_info.value) == (
-        "KeyInContextHasNoValueError(\"context['slackToken'] "
-        "must have a value for pypyrslack.steps.send.\",)")
+    assert str(err_info.value) == (
+        "context['slackToken'] must have a value for pypyrslack.steps.send.")
 
 
 def test_slack_channel_no_value_raises():
@@ -126,6 +122,5 @@ def test_slack_channel_no_value_raises():
             'slackText': 'this is :boom: text'})
         send.run_step(context)
 
-    assert repr(err_info.value) == (
-        "KeyInContextHasNoValueError(\"context['slackChannel'] "
-        "must have a value for pypyrslack.steps.send.\",)")
+    assert str(err_info.value) == (
+        "context['slackChannel'] must have a value for pypyrslack.steps.send.")
