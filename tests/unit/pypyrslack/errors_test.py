@@ -11,8 +11,7 @@ def test_base_error_raises():
     with pytest.raises(PypyrSlackError) as err_info:
         raise PypyrSlackError("this is error text right here")
 
-    assert repr(err_info.value) == ("Error('this is error text "
-                                    "right here',)")
+    assert str(err_info.value) == "this is error text right here"
 
 
 def test_slack_send_error_raises():
@@ -20,8 +19,7 @@ def test_slack_send_error_raises():
     with pytest.raises(SlackSendError) as err_info:
         raise SlackSendError("this is error text right here")
 
-    assert repr(err_info.value) == ("SlackSendError('this is error "
-                                    "text right here',)")
+    assert str(err_info.value) == "this is error text right here"
 
 
 def test_slack_send_error_inheritance():
