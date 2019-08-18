@@ -1,7 +1,7 @@
 """pypyr step that sends a message to slack."""
 import logging
 from pypyrslack.errors import SlackSendError
-from slackclient import SlackClient
+from slack import WebClient
 
 logger = logging.getLogger(__name__)
 
@@ -42,10 +42,9 @@ def run_step(context):
     logger.debug(
         f"Sending to {context['slackChannel']}: {context['slackText']}")
 
-    sc = SlackClient(context['slackToken'])
+    sc = WebClient(context['slackToken'])
 
-    result = sc.api_call(
-        'chat.postMessage',
+    result = sc.chat_postMessage(
         as_user=True,
         channel=context.get_formatted('slackChannel'),
         text=context.get_formatted('slackText')
