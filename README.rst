@@ -2,9 +2,9 @@
 pypyr slack plug-in
 ###################
 
-.. image:: https://pypyr.io/images/pypyr-logo-small.png
-    :alt: pypyr-logo
-    :align: left
+.. image:: https://pypyr.io/images/2x1/pypyr-taskrunner-yaml-pipeline-automation-1200x600.1bd2401e4f8071d85bcb1301128e4717f0f54a278e91c9c350051191de9d22c0.png
+    :alt: pypyr task runner for automation pipelines
+    :align: center
 
 *pypyr*
     pronounce how you like, but I generally say *piper* as in "piping down the
@@ -14,7 +14,7 @@ Send messages to `slack <https://slack.com/>`__ from pypyr. This is useful for
 sending notifications on success or failure conditions in your pipelines. Or
 for sending a message just because you can.
 
-`pypyr <https://github.com/pypyr/pypyr-cli>`__ is a command line interface to
+`pypyr <https://github.com/pypyr/pypyr>`__ is a command line interface to
 run pipelines defined in yaml.
 
 |build-status| |coverage| |pypi|
@@ -33,8 +33,8 @@ pip
 
   # pip install --upgrade pypyrslack
 
-pypyrslack depends on pypyr-cli. The above ``pip`` will install it for you if
-you don't have it already.
+pypyrslack depends on the pypyr core. The above ``pip`` will install it for you 
+if you don't have it already.
 
 Python version
 ==============
@@ -150,7 +150,7 @@ Do remember not to fling the api key around as a shell argument - it could
 very easily leak that way into logs or expose via a ``ps``. I generally use one
 of the pypyr built-in context parsers like *pypyr.parser.jsonfile* or
 *pypyr.parser.yamlfile*, see
-`here for details <https://github.com/pypyr/pypyr-cli#built-in-context-parsers>`__.
+`pypyr builtin context parsers <https://pypyr.io/docs/context-parsers/>`__.
 
 *******
 Testing
@@ -214,7 +214,7 @@ Contribute
 Developers
 ==========
 For information on how to help with pypyr, run tests and coverage, please do
-check out the `contribution guide <https://github.com/pypyr/pypyr-cli/blob/master/CONTRIBUTING.rst>`_.
+check out the `pypyr contribution guide <https://pypyr.io/docs/contributing/>`_.
 
 Bugs
 ====
