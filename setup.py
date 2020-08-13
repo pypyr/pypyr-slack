@@ -28,7 +28,7 @@ setup(
     version=pypyrslack.version.__version__,
 
     description=('pypyr slack plug-in: send slack messages from pypyr '
-                 'pipelines'),
+                 'task-runner automation pipelines'),
     long_description=long_description,
 
     # The project's main homepage.
@@ -64,7 +64,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='pypyr slack plugin devops pipeline runner',
+    keywords='pypyr,slack,plugin,devops,task-runner,pipeline',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
@@ -108,9 +108,9 @@ setup(
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
     # pip to create the appropriate form of executable for the target platform.
-    entry_points={
-        'pypyrslack': [
-            'pypyrslack=pypyrslack'
-        ]
-    },
+    # entry_points={
+    #     'pypyrslack': [
+    #         'pypyrslack=pypyrslack'
+    #     ]
+    # },
 )
