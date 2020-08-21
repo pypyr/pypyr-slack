@@ -2,6 +2,7 @@
 import logging
 from pypyrslack.errors import SlackSendError
 from slack import WebClient
+from slack.errors import SlackApiError
 
 logger = logging.getLogger(__name__)
 
@@ -40,19 +41,17 @@ def run_step(context):
                                     'slackText')
 
     logger.debug(
-        f"Sending to {context['slackChannel']}: {context['slackText']}")
+        "Sending to %s: %s", context['slackChannel'], context['slackText'])
 
-    sc = WebClient(context['slackToken'])
+    sc = WebClient(context.get_formatted('slackToken'))
 
-    result = sc.chat_postMessage(
-        as_user=True,
-        channel=context.get_formatted('slackChannel'),
-        text=context.get_formatted('slackText')
-    )
-
-    if result['ok']:
-        logger.info(f"Sent message to slack {context['slackChannel']}.")
-    else:
-        raise SlackSendError(result['error'])
+    try:
+        sc.chat_postMessage(
+            channel=context.get_formatted('slackChannel'),
+            text=context.get_formatted('slackText')
+        )
+        logger.info("Sent message to slack %s.", context['slackChannel'])
+    except SlackApiError as err:
+        raise SlackSendError(err.response['error']) from err
 
     logger.debug("done")

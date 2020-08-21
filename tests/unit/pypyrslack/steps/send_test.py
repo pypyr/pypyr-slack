@@ -1,11 +1,12 @@
 """send.py unit tests."""
+from slack import WebClient
+from slack.errors import SlackApiError
 import pytest
+from unittest.mock import patch
 from pypyr.context import Context
 from pypyr.errors import KeyInContextHasNoValueError, KeyNotInContextError
 from pypyrslack.errors import SlackSendError
 from pypyrslack.steps import send
-from slack import WebClient
-from unittest.mock import patch
 
 
 @patch.object(WebClient, 'chat_postMessage')
@@ -20,7 +21,6 @@ def test_send_pass(mock_client, mock_post):
 
     mock_client.assert_called_once_with('in your dreams')
     mock_post.assert_called_once_with(
-        as_user=True,
         channel='#blah',
         text='this is :boom: text')
 
@@ -33,15 +33,14 @@ def test_send_with_string_interpolation(mock_client, mock_post):
     context = Context({'arbkey1': 'arb value1',
                        'arbkey2': 'arb value2',
                        'arbkey3': 'channelarb',
-                       'slackToken': 'in your dreams',
+                       'slackToken': 'in {arbkey1} dreams',
                        'slackChannel': '#{arbkey3}',
                        'slackText': '{arbkey2} this is :boom: text {arbkey1}'})
 
     send.run_step(context)
 
-    mock_client.assert_called_once_with('in your dreams')
+    mock_client.assert_called_once_with('in arb value1 dreams')
     mock_post.assert_called_once_with(
-        as_user=True,
         channel='#channelarb',
         text='arb value2 this is :boom: text arb value1')
 
@@ -51,7 +50,8 @@ def test_send_with_string_interpolation(mock_client, mock_post):
 def test_slack_error_raises(mock_client, mock_post):
     """SlackSendError on slack failure."""
     # Actual error example: {'ok': False, 'error': 'channel_not_found'}
-    mock_post.return_value = {'ok': False, 'error': 'bang bang'}
+    mock_post.side_effect = SlackApiError(response={'error': 'bang bang'},
+                                          message="bang bang msg")
     context = Context({'slackToken': 'in your dreams',
                        'slackChannel': '#blah',
                        'slackText': 'this is :boom: text'})
