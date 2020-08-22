@@ -1,0 +1,29 @@
+steps:
+  - name: pypyr.steps.env
+    comment: slack api token in environment variable
+    in:
+      env:
+        get:
+          slackToken: SLACK_TOKEN
+  - name: pypyr.steps.contextsetf
+    in:
+      contextSetf:
+        slackChannel: "#random"
+  - name: pypyrslack.steps.send
+    in:
+      slackText: "pypyr is busy doing things :construction:"
+
+# The slackToken and slackChannel have already been set in steps
+# on_success and on_failure are just changing the text for the message.
+on_success:
+  - name: pypyrslack.steps.send
+    in:
+      slackText: "that went well! :hotdog:"
+
+on_failure:
+  - name: pypyrslack.steps.send
+    comment: override the channel to send failures to their
+             own special channel.
+    in:
+      slackChannel: "#failure-notification-channel"
+      slackText: "whoops! :rage1:"
