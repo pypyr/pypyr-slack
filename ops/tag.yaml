@@ -21,16 +21,16 @@ steps:
   - name: pypyr.steps.cmd
     in:
       cmd:
-        run: git tag -l "{version}"
+        run: git tag -l "v{version}"
         save: True
   - name: pypyr.steps.stopstepgroup
     description: --> check if tag already exists
-    run: !py cmdOut['stdout'].rstrip('\r\n') == version
+    run: !py cmdOut['stdout'].rstrip('\r\n') == f'v{version}'
   - name: pypyr.steps.cmd
     comment: tag current HEAD
     description: --> create new tag for release
     in:
-      cmd: git tag "{version}"
+      cmd: git tag "v{version}"
   - name: pypyr.steps.call
     comment: set git info only on ci, not local dev.
     run: '{isCi}'
