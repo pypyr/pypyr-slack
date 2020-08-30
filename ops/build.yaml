@@ -74,7 +74,7 @@ publish:
   - name: pypyr.steps.cmd
     description: --> uninstall current version of package before attempting to reinstall from pypi
     in:
-      cmd: pip uninstall {package_name}
+      cmd: pip uninstall -y {package_name}
   - name: pypyr.steps.contextcopy
     in:
       contextCopy:
