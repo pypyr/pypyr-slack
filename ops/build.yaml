@@ -119,7 +119,7 @@ get_version:
         version_module = importlib.import_module(context['version_module_name'])
         if context.get('is_version_module_loaded'): 
           importlib.reload(version_module)
-        context['version'] = f'v{version_module.__version__}'
+        context['version'] = f'{version_module.__version__}'
         context['is_version_module_loaded'] = True
   - name: pypyr.steps.echo
     in:
