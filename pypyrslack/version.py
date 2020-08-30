@@ -6,7 +6,7 @@ __version__ = '1.0.1'
 
 
 def get_version():
-    """Returns package-name __version__ python python_version"""
+    """Return package-name __version__ python python_version."""
     return (f'pypyrslack {__version__} '
             f'python {platform.python_version()}')
 

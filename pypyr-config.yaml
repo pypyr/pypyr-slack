@@ -1,0 +1,2 @@
+package_name: pypyrslack
+version_module_name: 'pypyrslack.version'
