@@ -70,11 +70,11 @@ publish:
   - name: pypyr.steps.cmd
     description: --> publishing package to pypi
     in:
-      cmd: echo twine upload dist/{package_name}-{version}*
+      cmd: twine upload dist/{package_name}-{version}*
   - name: pypyr.steps.cmd
     description: --> uninstall current version of package before attempting to reinstall from pypi
     in:
-      cmd: echo pip uninstall {package_name}
+      cmd: pip uninstall {package_name}
   - name: pypyr.steps.contextcopy
     in:
       contextCopy:
@@ -89,7 +89,7 @@ publish:
       max: 5
       sleep: 10
     in:
-      cmd: echo pip install --upgrade --no-cache-dir {package_name}=={expected_version}
+      cmd: pip install --upgrade --no-cache-dir {package_name}=={expected_version}
   - name: pypyr.steps.call
     in:
       call: get_version
