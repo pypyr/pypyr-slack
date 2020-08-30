@@ -28,7 +28,7 @@ def test_send_pass(mock_client, mock_post):
 @patch.object(WebClient, 'chat_postMessage')
 @patch.object(WebClient, '__init__', return_value=None)
 def test_send_with_string_interpolation(mock_client, mock_post):
-    """Slack send with string interpolation"""
+    """Slack send with string interpolation."""
     mock_post.return_value = {'ok': True}
     context = Context({'arbkey1': 'arb value1',
                        'arbkey2': 'arb value2',
@@ -48,7 +48,7 @@ def test_send_with_string_interpolation(mock_client, mock_post):
 @patch.object(WebClient, 'chat_postMessage')
 @patch.object(WebClient, '__init__', return_value=None)
 def test_slack_error_raises(mock_client, mock_post):
-    """SlackSendError on slack failure."""
+    """A SlackSendError on slack failure."""
     # Actual error example: {'ok': False, 'error': 'channel_not_found'}
     mock_post.side_effect = SlackApiError(response={'error': 'bang bang'},
                                           message="bang bang msg")
@@ -63,7 +63,7 @@ def test_slack_error_raises(mock_client, mock_post):
 
 
 def test_no_slack_token_raises():
-    """slackToken context required."""
+    """The slackToken context required."""
     with pytest.raises(KeyNotInContextError) as err_info:
         context = Context({'slackChannel': '#blah',
                            'slackText': 'this is :boom: text'})
@@ -75,7 +75,7 @@ def test_no_slack_token_raises():
 
 
 def test_no_slack_channel_raises():
-    """slackChannel context required."""
+    """The slackChannel context required."""
     with pytest.raises(KeyNotInContextError) as err_info:
         context = Context({'slackToken': 'in your dreams',
                            'slackText': 'this is :boom: text'})
@@ -87,7 +87,7 @@ def test_no_slack_channel_raises():
 
 
 def test_no_slack_text_raises():
-    """slackChannel context required."""
+    """The slackChannel context required."""
     with pytest.raises(KeyNotInContextError) as err_info:
         context = Context({'slackToken': 'in your dreams',
                            'slackChannel': '#blah'})
@@ -99,7 +99,7 @@ def test_no_slack_text_raises():
 
 
 def test_slack_token_no_value_raises():
-    """slackToken context value required."""
+    """The slackToken context value required."""
     with pytest.raises(KeyInContextHasNoValueError) as err_info:
         context = Context({
             'slackToken': None,
@@ -112,7 +112,7 @@ def test_slack_token_no_value_raises():
 
 
 def test_slack_channel_no_value_raises():
-    """slackChannel context value required."""
+    """The slackChannel context value required."""
     with pytest.raises(KeyInContextHasNoValueError) as err_info:
         context = Context({
             'slackToken': 'token here',

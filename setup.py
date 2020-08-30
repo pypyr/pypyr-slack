@@ -16,7 +16,7 @@ import pypyrslack.version
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
@@ -27,12 +27,20 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version=pypyrslack.version.__version__,
 
-    description=('pypyr slack plug-in: send slack messages from pypyr '
-                 'task-runner automation pipelines'),
+    description=('pypyr slack plug-in: send slack messages & notifications '
+                 'from pypyr task-runner automation pipelines.'),
     long_description=long_description,
+    long_description_content_type='text/markdown',
 
     # The project's main homepage.
-    url='https://github.com/pypyr/pypyr-slack',
+    url='https://pypyr.io/',
+
+    project_urls={
+        'Documentation': 'https://pypyr.io/docs/plugins/slack/',
+        'Source': 'https://github.com/pypyr/pypyr-slack',
+        'Release notes': 'https://pypyr.io/updates/releases/',
+        'Tracker': 'https://github.com/pypyr/pypyr-slack/issues/',
+    },
 
     # Author details
     author='Thomas Gaigher',
@@ -80,16 +88,24 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=['pypyr', 'slackclient'],
-    # install_requires=['slackclient'],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
     # for example:
     # $ pip install -e .[dev,test]
     extras_require={
-        'dev': ['check-manifest', 'flake8'],
-        'test': ['pytest', 'pytest-cov', 'tox'],
-        'deploy': ['bumpversion', 'twine']
+        'dev': [
+            'bumpversion',
+            'codecov',
+            'flake8',
+            'flake8-docstrings',
+            'pypyr',
+            'pytest',
+            'pytest-cov',
+            'setuptools',
+            'twine',
+            'wheel'
+        ]
     },
 
     # If there are data files included in your packages that need to be

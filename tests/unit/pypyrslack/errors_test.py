@@ -23,7 +23,7 @@ def test_slack_send_error_raises():
 
 
 def test_slack_send_error_inheritance():
-    """SlackSendError should inherit all the way up to pypyr Error."""
+    """The SlackSendError should inherit all the way up to pypyr Error."""
     # confirm subclassed from pypyr root error
     err = SlackSendError()
     assert isinstance(err, PypyrSlackError)
