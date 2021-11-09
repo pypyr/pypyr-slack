@@ -15,7 +15,7 @@ All documentation for the pypyr slack plugin is here:
 https://pypyr.io/docs/plugins/slack/
 
 [![build status](https://github.com/pypyr/pypyr-slack/workflows/lint-test-build/badge.svg)](https://github.com/pypyr/pypyr-slack/actions)
-[![coverage status](https://codecov.io/gh/pypyr/pypyr-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/pypyr/pypyr-slack)
+[![coverage status](https://codecov.io/gh/pypyr/pypyr-slack/branch/main/graph/badge.svg)](https://codecov.io/gh/pypyr/pypyr-slack)
 [![pypi version](https://badge.fury.io/py/pypyrslack.svg)](https://pypi.python.org/pypi/pypyrslack/)
 [![apache 2.0 license](https://img.shields.io/github/license/pypyr/pypyr-slack)](https://opensource.org/licenses/Apache-2.0)
 
